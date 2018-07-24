@@ -2,15 +2,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    debug: true,
-    devtool: 'source-map',
-    entry: ['./src/index.js'],
+    entry: {
+        app: './src/index.js'
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './template.html',
         }),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true
+        }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('dev')
+            'process.env.NODE_ENV': JSON.stringify('prod')
         }),
     ],
     output: {
@@ -37,16 +40,5 @@ module.exports = {
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
-    },
-    devServer: {
-        historyApiFallback: true,
-        contentBase: './',
-        host: '0.0.0.0',
-        disableHostCheck: true,
-        port: 8080,
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: 1000
-        }
     }
 };

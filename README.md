@@ -11,3 +11,15 @@
 
 > npm start
 ```
+
+### Getting Ready for Deploy
+
+Beta Testing
+```
+> npm run beta
+```
+
+Production
+```
+> npm run prod
+```
