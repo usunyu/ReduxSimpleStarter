@@ -4,20 +4,19 @@ const webpack = require('webpack');
 module.exports = {
     debug: true,
     devtool: 'source-map',
-    entry: ['./src/index.js'],
+    entry: __dirname + '/src/index.js',
     plugins: [
         new HtmlWebpackPlugin({
-            template: './template.html',
+            template: './public/template.html',
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('dev')
         }),
     ],
     output: {
-        path: __dirname,
+        path: __dirname + '/public',
         publicPath: '/',
-        filename: 'bundle.[chunkhash:8].js',
-        hash: true,
+        filename: 'bundle.js',
     },
     module: {
         loaders: [
@@ -39,14 +38,12 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     devServer: {
+        contentBase: './public',
+        colors: true,
         historyApiFallback: true,
-        contentBase: './',
+        inline: true,
         host: '0.0.0.0',
-        disableHostCheck: true,
         port: 8080,
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: 1000
-        }
+        disableHostCheck: true
     }
 };

@@ -2,12 +2,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        app: './src/index.js'
-    },
+    entry: __dirname + '/src/index.js',
     plugins: [
         new HtmlWebpackPlugin({
-            template: './template.html',
+            template: './public/template.html',
         }),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true
@@ -17,7 +15,7 @@ module.exports = {
         }),
     ],
     output: {
-        path: __dirname,
+        path: __dirname + '/public/beta/',
         publicPath: '/',
         filename: 'bundle.[chunkhash:8].js',
         hash: true,
