@@ -1,5 +1,8 @@
 # React Redux Starter Kit
 
+### Deprecated
+Please use https://reactjs.org/community/starter-kits.html
+
 ### Getting Started
 
 ```
